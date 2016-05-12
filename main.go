@@ -74,7 +74,7 @@ func main() {
 
 	app := cli.NewApp()
 	app.Name = Name
-	app.Usage = "a self-contained, mostly zero-configuration environment"
+	app.Usage = "a self-contained, mostly zero-configuration dev environment"
 	app.Version = "0.2"
 	app.Authors = []cli.Author{
 		cli.Author{
@@ -188,8 +188,15 @@ func proxyUnmodifiedToCompose(c *cli.Context) error {
 }
 
 func run(c *cli.Context) error {
-	fmt.Println("docker-compose", "--rm", c.Args())
-	return nil
+	args := []string{
+		"run",
+		"--rm",
+	}
+	args = append(args, additionalArgs...)
+
+	fmt.Println("docker-compose", args)
+
+	return cmd.RunWithAttachedOutput("docker-compose", args...)
 }
 
 func up(c *cli.Context) error {
