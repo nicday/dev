@@ -94,7 +94,7 @@ func sudoInitDNS() error {
 		fmt.Println("Please enter your password to initalize DNS:")
 	}
 
-	err := cmd.RunWithAttachedOutput("sudo", "camp", "init-dns")
+	err := cmd.RunWithAttachedOutput("sudo", "dev", "init-dns")
 	if err != nil {
 		return err
 	}
