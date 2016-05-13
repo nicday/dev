@@ -122,7 +122,7 @@ func initDNS() error {
 		return err
 	}
 
-	err = ioutil.WriteFile("/etc/resolver/something", templates.ResolverDev, 0755)
+	err = ioutil.WriteFile("/etc/resolver/dev", templates.ResolverDev, 0755)
 	if err != nil {
 		return err
 	}
